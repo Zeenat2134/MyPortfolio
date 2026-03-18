@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeenat | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+                    colors: { darkBg: '#09090b', },
+                    animation: { 
+                        blob: "blob 10s infinite", 
+                        float: "float 6s ease-in-out infinite",
+                        pop: "pop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards"
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            background-color: #09090b; color: #e5e5e5; overflow-x: hidden; 
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f43f5e; }
+        
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.4); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(244, 63, 94, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(244, 63, 94, 0.15);
+            border-color: rgba(244, 63, 94, 0.4); transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rose-500 selection:text-white relative h-screen">
+
+    <div id="mainContent" class="h-full overflow-y-auto transition-all duration-1000 relative z-10">
+        
+        <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-rose-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
+            <div class="absolute top-[20%] right-[-10%] w-[35rem] h-[35rem] bg-orange-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 3s;"></div>
+            <div class="absolute bottom-[-20%] left-[20%] w-[40rem] h-[40rem] bg-fuchsia-600/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 6s;"></div>
+        </div>
+
+        <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-5xl glass-panel z-40 rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300 border-t-white/10">
+            <a href="#" class="text-2xl font-black text-white tracking-wider flex items-center gap-1">
+                Z<span class="text-rose-500">.</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-lg font-medium text-stone-300">
+                <a href="#about" class="hover:text-rose-400 transition">About</a>
+                <a href="#skills" class="hover:text-rose-400 transition">Skills</a>
+                <a href="#projects" class="hover:text-rose-400 transition">Projects</a>
+                <a href="#certifications" class="hover:text-rose-400 transition">Certs</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="openAdminModal()" class="text-stone-400 hover:text-rose-400 transition ml-2 mr-2" title="Admin Access">
+                    <i class="fas fa-user-shield"></i>
+                </button>
+
+                <button onclick="openModal('keyModal')" class="admin-only hidden px-4 py-2 rounded-full bg-fuchsia-500/20 text-fuchsia-300 text-xs font-bold border border-fuchsia-500/30 hover:bg-fuchsia-500/40 transition">
+                    <i class="fas fa-key"></i> Key
+                </button>
+                <a href="#contactSection" class="px-6 py-2.5 rounded-full bg-white text-black text-base font-bold transition hover:scale-105 flex items-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    Let's Talk <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </nav>
+
+        <header id="home" class="relative pt-40 pb-20 px-4 flex flex-col items-center justify-center min-h-[95vh] text-center z-10">
+            <div id="welcomeMessage" class="animate-float mb-6 glass-panel px-5 py-2 rounded-full text-sm font-medium text-rose-300 flex items-center gap-2 border-t-rose-500/20">
+                <span class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+                </span>
+                Designing the future
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight leading-tight">
+                Hi, I'm <br class="md:hidden"/> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-400 to-orange-400">Zeenat</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-stone-400 max-w-2xl mb-10 h-8 font-light">
+                I'm a <span id="typed" class="text-white font-medium"></span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 z-10 mb-12">
+                <a href="#projects" class="px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 to-orange-500 text-white font-bold hover:scale-105 transition duration-300 shadow-[0_0_30px_rgba(244,63,94,0.3)] flex items-center justify-center">
+                    Explore My Work <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+                
+                <a href="mycv.pdf" download="Zeenat_CV.pdf" class="px-8 py-4 rounded-full glass-panel hover:bg-white/10 text-white font-bold transition duration-300 flex items-center justify-center hover:border-rose-400/50">
+                    <i class="fas fa-download mr-2 text-rose-400"></i> Download Resume
+                </a>
+            </div>
+
+            <div class="flex space-x-8 z-10">
+                <a href="https://www.linkedin.com/in/zeenat21" target="_blank" class="text-stone-500 hover:text-[#0077b5] text-3xl transition transform hover:-translate-y-1 hover:scale-110" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Zeenat2134" target="_blank" class="text-stone-500 hover:text-white text-3xl transition transform hover:-translate-y-1 hover:scale-110" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#contactSection" class="text-stone-500 hover:text-rose-400 text-3xl transition transform hover:-translate-y-1 hover:scale-110" title="Email Me"><i class="fas fa-envelope"></i></a>
+            </div>
+        </header>
+
+        <section id="about" class="py-24 px-4 border-t border-white/5 relative z-10">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-black text-white mb-6">About Me</h2>
+                    <p class="text-stone-400 leading-relaxed mb-6 text-lg font-light">
+                        I am a dedicated Computer Science student at Lovely Professional University with a passion for software development, game design, and building interactive web platforms. I thrive on problem-solving and transforming ideas into functional, beautiful digital experiences.
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl hover-glow transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                        <i class="fas fa-graduation-cap text-orange-400"></i> Education Journey
+                    </h3>
+                    
+                    <div class="relative pl-6 border-l border-white/10 mb-8">
+                        <div class="absolute w-3 h-3 bg-rose-400 rounded-full -left-[6.5px] top-1.5 shadow-[0_0_10px_rgba(244,63,94,0.8)]"></div>
+                        <h4 class="font-bold text-gray-200 text-lg">Bachelor of Technology - CSE</h4>
+                        <p class="text-sm text-rose-400 font-medium mb-1">Lovely Professional University | Ongoing</p>
+                        <p class="text-sm text-stone-400">CGPA: 9.16</p>
+                    </div>
+                    
+                    <div class="relative pl-6 border-l border-white/10 mb-8">
+                        <div class="absolute w-3 h-3 bg-fuchsia-400 rounded-full -left-[6.5px] top-1.5"></div>
+                        <h4 class="font-bold text-gray-200 text-lg">Intermediate (81%)</h4>
+                        <p class="text-sm text-stone-400 mb-1">Aadharshila Vidya Mandir School</p>
+                        <p class="text-xs text-stone-500">Apr 2021 - Mar 2022</p>
+                    </div>
+                    
+                    <div class="relative pl-6 border-l border-transparent">
+                        <div class="absolute w-3 h-3 bg-stone-500 rounded-full -left-[6.5px] top-1.5"></div>
+                        <h4 class="font-bold text-gray-200 text-lg">Matriculation (91%)</h4>
+                        <p class="text-sm text-stone-400 mb-1">Aadharshila Vidya Mandir School</p>
+                        <p class="text-xs text-stone-500">Apr 2019 - Mar 2020</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24 px-4 border-t border-white/5 relative overflow-hidden z-10">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="flex justify-between items-center mb-16">
+                    <h2 class="text-4xl font-black text-white">Technical Arsenal</h2>
+                    <button onclick="openModal('skillModal')" class="admin-only hidden bg-white/10 hover:bg-rose-500 text-white px-4 py-2 rounded-xl transition font-bold text-sm"><i class="fas fa-plus mr-2"></i>Add Skill</button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-panel p-8 rounded-3xl relative group border-t-rose-500/30">
+                        <div class="absolute inset-0 bg-rose-500/10 blur-[50px] opacity-50 group-hover:opacity-100 transition-opacity duration-500 rounded-full pointer-events-none"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold text-white mb-8 flex items-center justify-center gap-3">
+                                <i class="fas fa-code text-rose-400"></i> Languages
+                            </h3>
+                            <div id="languagesContainer" class="flex flex-wrap justify-center gap-4"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-panel p-8 rounded-3xl relative group border-t-fuchsia-500/30">
+                        <div class="absolute inset-0 bg-fuchsia-500/10 blur-[50px] opacity-50 group-hover:opacity-100 transition-opacity duration-500 rounded-full pointer-events-none"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold text-white mb-8 flex items-center justify-center gap-3">
+                                <i class="fas fa-layer-group text-fuchsia-400"></i> Frameworks
+                            </h3>
+                            <div id="frameworksContainer" class="flex flex-wrap justify-center gap-4"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-panel p-8 rounded-3xl relative group border-t-orange-500/30">
+                        <div class="absolute inset-0 bg-orange-500/10 blur-[50px] opacity-50 group-hover:opacity-100 transition-opacity duration-500 rounded-full pointer-events-none"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold text-white mb-8 flex items-center justify-center gap-3">
+                                <i class="fas fa-tools text-orange-400"></i> Tools & Platforms
+                            </h3>
+                            <div id="toolsContainer" class="flex flex-wrap justify-center gap-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 px-4 border-y border-white/5 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="text-4xl font-black text-white">Featured Projects</h2>
+                    <button onclick="openModal('projectModal')" class="admin-only hidden bg-white/10 hover:bg-rose-500 text-white px-4 py-2 rounded-xl transition font-bold text-sm"><i class="fas fa-plus mr-2"></i>Add Project</button>
+                </div>
+                <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="py-24 px-4 relative z-10 border-b border-white/5">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16">
+                <div>
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-3xl font-black text-white flex items-center gap-3"><i class="fas fa-award text-rose-400"></i> Certifications</h2>
+                        <button onclick="openModal('certModal')" class="admin-only hidden bg-white/10 hover:bg-rose-500 text-white px-3 py-1 rounded-lg transition font-bold text-xs"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div id="certsContainer" class="space-y-4"></div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-3xl font-black text-white flex items-center gap-3"><i class="fas fa-trophy text-orange-400"></i> Achievements</h2>
+                        <button onclick="openModal('achievementModal')" class="admin-only hidden bg-white/10 hover:bg-orange-500 text-white px-3 py-1 rounded-lg transition font-bold text-xs"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div id="achievementsContainer" class="relative border-l border-white/10 ml-4 space-y-10 mt-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contactSection" class="py-24 px-4 relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-white mb-4">Let's Work Together</h2>
+                    <p class="text-stone-400">Feel free to reach out for collaborations, opportunities, or just a friendly chat!</p>
+                </div>
+
+                <form id="contactForm" onsubmit="submitContactForm(event)" class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-stone-400 mb-2 ml-1">Your Name</label>
+                            <input type="text" id="contactName" required placeholder="John Doe" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-rose-400 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-stone-400 mb-2 ml-1">Your Email</label>
+                            <input type="email" id="contactEmail" required placeholder="john@example.com" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-rose-400 transition">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-stone-400 mb-2 ml-1">Subject</label>
+                        <input type="text" id="contactSubject" required placeholder="Job Opportunity / Collaboration" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-rose-400 transition">
+                    </div>
+
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-stone-400 mb-2 ml-1">Message</label>
+                        <textarea id="contactMessage" required rows="4" placeholder="Hello Zeenat, I would like to discuss..." class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-rose-400 transition resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" id="contactSubmitBtn" class="w-full bg-gradient-to-r from-rose-500 to-orange-500 text-white font-bold py-4 rounded-xl hover:scale-[1.02] transition shadow-[0_0_20px_rgba(244,63,94,0.3)] flex items-center justify-center gap-2">
+                        <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+                    </button>
+
+                    <div id="contactSuccess" class="hidden mt-6 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-center font-medium">
+                        <i class="fas fa-check-circle mr-2"></i> Message sent successfully! I'll get back to you soon.
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <footer class="text-center py-8 text-stone-600 text-sm font-medium z-10 relative">© 2026 Zeenat. Designed & Developed with <i class="fas fa-heart text-rose-500 mx-1"></i></footer>
+    </div>
+
+    <div id="formOverlay" class="fixed inset-0 bg-[#09090b]/80 backdrop-blur-md z-[200] hidden items-center justify-center p-4">
+        
+        <div id="adminLoginModal" class="form-modal hidden glass-panel p-6 rounded-3xl w-full max-w-md relative z-[210]">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-stone-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <h3 class="text-2xl font-bold text-white mb-2">Admin Access 👑</h3>
+            <p class="text-gray-400 text-sm mb-6">Enter your secret key to manage content.</p>
+            <input type="password" id="adminSecretInput" placeholder="Secret Key" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white mb-2 focus:border-fuchsia-400 outline-none">
+            
+            <div class="flex justify-end mb-4">
+                <button onclick="openOtpModal()" class="text-xs text-fuchsia-400 hover:text-fuchsia-300 transition">Forgot Key?</button>
+            </div>
+            
+            <p id="adminError" class="text-red-400 text-sm mb-4 hidden">Incorrect key. Try again.</p>
+            <button onclick="verifyAdmin()" class="w-full bg-gradient-to-r from-fuchsia-600 to-rose-600 text-white font-bold py-3 rounded-xl hover:scale-[1.02] transition shadow-[0_0_15px_rgba(217,70,239,0.3)]">Unlock Dashboard</button>
+        </div>
+
+        <div id="otpModal" class="form-modal hidden glass-panel p-6 rounded-2xl w-full max-w-md relative z-[210]">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-stone-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-bold text-white mb-4">Reset Secret Key</h3>
+            
+            <div id="otpStep1">
+                <p class="text-sm text-stone-400 mb-4">Enter your registered email address to receive an OTP code.</p>
+                <input type="email" id="resetEmail" placeholder="Email Address (to.reachzeenat@gmail.com)" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white mb-4 focus:border-fuchsia-400 outline-none">
+                <button onclick="sendOtp()" class="w-full bg-fuchsia-600 text-white font-bold py-3 rounded-xl hover:scale-[1.02] transition">Send OTP</button>
+            </div>
+
+            <div id="otpStep2" class="hidden">
+                <p class="text-sm text-stone-400 mb-4">Enter the 6-digit code sent to your email, along with your new key.</p>
+                <input type="text" id="otpInput" placeholder="6-digit OTP" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white mb-3 focus:border-rose-400 outline-none">
+                <input type="password" id="newResetKey" placeholder="Enter New Secret Key" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white mb-4 focus:border-rose-400 outline-none">
+                <button onclick="verifyOtpAndReset()" class="w-full bg-rose-500 text-white font-bold py-3 rounded-xl hover:scale-[1.02] transition">Reset Key</button>
+            </div>
+        </div>
+
+        <div id="keyModal" class="form-modal hidden glass-panel p-6 rounded-2xl w-full max-w-md relative">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-stone-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-bold text-white mb-4">Change Secret Key</h3>
+            <input type="text" id="newKey" placeholder="Enter new secret key" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-4">
+            <button onclick="saveNewKey()" class="w-full bg-fuchsia-600 text-white font-bold py-2 rounded-xl">Save Key</button>
+        </div>
+
+        <div id="skillModal" class="form-modal hidden glass-panel p-6 rounded-2xl w-full max-w-md relative">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-stone-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-bold text-white mb-4">Add Technical Skill</h3>
+            <select id="skillCategory" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-4 focus:outline-none">
+                <option value="languages" class="bg-gray-900">Language</option>
+                <option value="frameworks" class="bg-gray-900">Framework</option>
+                <option value="tools" class="bg-gray-900">Tool/Platform</option>
+            </select>
+            <input type="text" id="skillName" placeholder="E.g. Docker" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-4">
+            <button onclick="saveItem('skill')" class="w-full bg-rose-500 text-white font-bold py-2 rounded-xl">Add Skill</button>
+        </div>
+
+        <div id="projectModal" class="form-modal hidden glass-panel p-6 rounded-2xl w-full max-w-md relative">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-stone-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-bold text-white mb-4">Add New Project</h3>
+            <input type="text" id="projTitle" placeholder="Project Title" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3">
+            <textarea id="projDesc" placeholder="Description" rows="2" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3"></textarea>
+            <input type="text" id="projTech" placeholder="Tech Stack (comma separated)" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3">
+            <input type="text" id="projLink" placeholder="GitHub/Live Link URL" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3">
+            
+            <label class="block text-sm font-medium text-stone-400 mb-1 ml-1">Upload Project Image</label>
+            <input type="file" id="projImageFile" accept="image/*" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-gray-300 mb-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-rose-500/20 file:text-rose-400 hover:file:bg-rose-500/30 file:cursor-pointer transition">
+            
+            <button onclick="saveItem('project')" class="w-full bg-rose-500 text-white font-bold py-2 rounded-xl">Add Project</button>
+        </div>
+
+        <div id="certModal" class="form-modal hidden glass-panel p-6 rounded-2xl w-full max-w-md relative">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-stone-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-bold text-white mb-4">Add Certification</h3>
+            <input type="text" id="certName" placeholder="Certification Name" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3">
+            <input type="text" id="certIssuer" placeholder="Issuer & Date (e.g. Google • Jan 2026)" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3">
+            <input type="text" id="certLink" placeholder="Credential URL" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-4">
+            <button onclick="saveItem('cert')" class="w-full bg-rose-500 text-white font-bold py-2 rounded-xl">Add Certification</button>
+        </div>
+
+        <div id="achievementModal" class="form-modal hidden glass-panel p-6 rounded-2xl w-full max-w-md relative">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-stone-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-bold text-white mb-4">Add Achievement</h3>
+            <input type="text" id="achTitle" placeholder="Achievement Title" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3">
+            <input type="text" id="achSubtitle" placeholder="Event/Date (e.g. Winner • Nov 2025)" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-3">
+            <textarea id="achDesc" placeholder="Description" rows="3" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2 text-white mb-4"></textarea>
+            <button onclick="saveItem('achievement')" class="w-full bg-orange-500 text-white font-bold py-2 rounded-xl">Add Achievement</button>
+        </div>
+    </div>
+
+    <script>
+        const defaultData = {
+            skills: {
+                languages: ['Python', 'C / C++ / C#', 'Java', 'JavaScript'],
+                frameworks: ['HTML & CSS', 'Tailwind CSS', 'React.js', 'Next.js'],
+                tools: ['MySQL', 'Packet Tracer', 'Unity', 'Vercel & GitHub']
+            },
+            projects: [
+                { title: 'DwelDubai', desc: 'A high-performance visa consultancy platform for UAE & Saudi Arabia relocations.', tech: 'React.js, Tailwind', link: 'https://github.com/Zeenat2134/DwelDubai', image: 'dwel.png', isStarred: false },
+                { title: 'Skillora', desc: 'A unified 2D/3D educational game platform with interactive simulations.', tech: 'Next.js, React.js', link: 'https://github.com/Zeenat2134/Skillora_web', image: 'skill.png', isStarred: false },
+                { title: 'ColorKey', desc: 'A fast reflex color-matching game built in Unity using C#.', tech: 'Unity, C#', link: 'https://github.com/Zeenat2134/ColorKey', image: 'colorKey.png', isStarred: false }
+            ],
+            certs: [
+                { name: 'OCI 2025 AI Foundations', issuer: 'Oracle • Oct 2025', link: '#' },
+                { name: 'OCI 2025 Foundations Associate', issuer: 'Oracle • Oct 2025', link: '#' },
+                { name: 'Game Dev using Unity & C#', issuer: 'CipherSchools • Aug 2025', link: '#' }
+            ],
+            achievements: [
+                { title: 'Smart India Hackathon 2025', subtitle: 'Grand Finale • Oct 2025', desc: 'Chosen among the top innovative teams representing Lovely Professional University.' },
+                { title: 'CyberSec Symposium 2.0', subtitle: 'Participant • Apr 2024', desc: 'Participated in North India\'s largest cybersecurity conference at LPU.' }
+            ]
+        };
+
+        let siteData = defaultData;
+        let authKey = localStorage.getItem('zp_secret_key') || 'zeenat21';
+        let isAdmin = false;
+        let simulatedOtp = null;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if(!window.typedInstance) {
+                window.typedInstance = new Typed('#typed', {
+                    strings: ['B.Tech Computer Science Student.', 'Software Development Enthusiast.', 'Creative Problem Solver.', 'UI / UX & Game Developer.'],
+                    typeSpeed: 50, backSpeed: 30, backDelay: 1500, loop: true, cursorChar: '|'
+                });
+            }
+        });
+
+        async function loadDataFromBackend() {
+            try {
+                const response = await fetch('http://localhost:5000/api/portfolio');
+                const data = await response.json();
+                if(data && data.projects) { siteData = data; }
+                renderAll();
+            } catch (err) {
+                console.log("Backend not connected. Running in Local Mode.");
+                siteData = JSON.parse(localStorage.getItem('zp_portfolio_data')) || defaultData;
+                renderAll();
+            }
+        }
+
+        async function syncWithBackend() {
+            try {
+                const response = await fetch('http://localhost:5000/api/portfolio', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ newData: siteData, secretKey: authKey })
+                });
+                if(!response.ok) throw new Error("Unauthorized");
+                localStorage.setItem('zp_portfolio_data', JSON.stringify(siteData));
+                renderAll();
+            } catch (err) {
+                console.log("Could not sync with server. Saving locally.");
+                localStorage.setItem('zp_portfolio_data', JSON.stringify(siteData));
+                renderAll();
+            }
+        }
+
+        async function submitContactForm(event) {
+            event.preventDefault(); 
+            const btn = document.getElementById('contactSubmitBtn');
+            const successMsg = document.getElementById('contactSuccess');
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+
+            const payload = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                subject: document.getElementById('contactSubject').value,
+                message: document.getElementById('contactMessage').value
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (response.ok) {
+                    successMsg.classList.remove('hidden');
+                    document.getElementById('contactForm').reset();
+                    setTimeout(() => successMsg.classList.add('hidden'), 5000);
+                } else { alert("Something went wrong. Please try again later."); }
+            } catch (error) { alert("Could not connect to the server. Is the backend running?"); } 
+            finally {
+                btn.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+            }
+        }
+
+        function getSkillIcon(skillName) {
+            const s = skillName.toLowerCase().trim();
+            const iconMap = {
+                'python': 'devicon-python-plain colored', 'java': 'devicon-java-plain colored', 'javascript': 'devicon-javascript-plain colored',
+                'js': 'devicon-javascript-plain colored', 'typescript': 'devicon-typescript-plain colored', 'c++': 'devicon-cplusplus-plain colored',
+                'c#': 'devicon-csharp-plain colored', 'html': 'devicon-html5-plain colored', 'css': 'devicon-css3-plain colored',
+                'tailwind': 'devicon-tailwindcss-original colored', 'react': 'devicon-react-original colored', 'next.js': 'devicon-nextjs-plain text-white',
+                'node.js': 'devicon-nodejs-plain colored', 'mysql': 'devicon-mysql-plain colored', 'mongodb': 'devicon-mongodb-plain colored',
+                'unity': 'devicon-unity-original text-white', 'github': 'devicon-github-original text-white', 'aws': 'devicon-amazonwebservices-original colored',
+                'gcp': 'devicon-googlecloud-plain colored', 'c / c++ / c#': 'devicon-cplusplus-plain colored'
+            };
+            if (iconMap[s]) return iconMap[s];
+            for (const [key, value] of Object.entries(iconMap)) { if (s.includes(key)) return value; }
+            return 'fas fa-check-circle text-stone-400';
+        }
+
+        // ADMIN LOGIN LOGIC
+        function openAdminModal() {
+            if(isAdmin) {
+                alert("You are already logged in as Admin.");
+                return;
+            }
+            openModal('adminLoginModal');
+            document.getElementById('adminError').classList.add('hidden');
+            document.getElementById('adminSecretInput').value = '';
+        }
+
+        function verifyAdmin() {
+            let input = document.getElementById('adminSecretInput').value;
+            if(input === authKey) {
+                isAdmin = true;
+                document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
+                closeModals();
+                
+                let welcomeMsg = document.getElementById('welcomeMessage');
+                if(welcomeMsg) {
+                    welcomeMsg.innerHTML = `<span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-fuchsia-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-fuchsia-500"></span></span>Admin Mode Active`;
+                }
+            } else {
+                document.getElementById('adminError').classList.remove('hidden');
+            }
+        }
+
+        function openOtpModal() {
+            document.getElementById('formOverlay').style.display = 'flex';
+            document.getElementById('formOverlay').style.zIndex = '300'; 
+            document.querySelectorAll('.form-modal').forEach(el => el.style.display = 'none');
+            document.getElementById('otpModal').style.display = 'block';
+            document.getElementById('otpStep1').classList.remove('hidden');
+            document.getElementById('otpStep2').classList.add('hidden');
+        }
+
+        function sendOtp() {
+            if (document.getElementById('resetEmail').value.toLowerCase().trim() === 'to.reachzeenat@gmail.com') {
+                simulatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+                alert("--- SIMULATED EMAIL INBOX ---\n\nYour secret key reset OTP is: " + simulatedOtp);
+                document.getElementById('otpStep1').classList.add('hidden');
+                document.getElementById('otpStep2').classList.remove('hidden');
+            } else { alert("Unrecognized email."); }
+        }
+
+        function verifyOtpAndReset() {
+            let newK = document.getElementById('newResetKey').value;
+            if (document.getElementById('otpInput').value === simulatedOtp && newK.trim().length > 0) {
+                localStorage.setItem('zp_secret_key', newK); authKey = newK;
+                alert("Success! Key reset."); closeModals();
+            } else { alert("Invalid OTP or empty key."); }
+        }
+
+        function deleteItem(type, index, category = null, event = null) {
+            if(event) { event.preventDefault(); event.stopPropagation(); }
+            if(confirm("Permanently delete this?")) {
+                if(type === 'skill') siteData.skills[category].splice(index, 1);
+                if(type === 'project') siteData.projects.splice(index, 1);
+                if(type === 'cert') siteData.certs.splice(index, 1);
+                if(type === 'achievement') siteData.achievements.splice(index, 1);
+                syncWithBackend();
+            }
+        }
+
+        function toggleStar(index, event) {
+            if(event) { event.preventDefault(); event.stopPropagation(); }
+            let proj = siteData.projects[index];
+            
+            if (proj.isStarred) { proj.isStarred = false; } 
+            else {
+                if (siteData.projects.filter(p => p.isStarred).length >= 3) { alert("Max 3 featured projects."); return; }
+                proj.isStarred = true;
+            }
+            siteData.projects.sort((a, b) => {
+                if (a.isStarred && !b.isStarred) return -1;
+                if (!a.isStarred && b.isStarred) return 1;
+                return 0;
+            });
+            syncWithBackend();
+        }
+
+        function renderAll() {
+            ['languages', 'frameworks', 'tools'].forEach(category => {
+                document.getElementById(`${category}Container`).innerHTML = siteData.skills[category].map((skill, index) => `
+                    <div class="relative inline-block group">
+                        <span class="w-24 h-24 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:-translate-y-2 backdrop-blur-sm">
+                            <i class="${getSkillIcon(skill)} text-3xl"></i>
+                            <span class="text-xs text-stone-300 font-medium text-center w-full truncate px-2">${skill}</span>
+                        </span>
+                        <button onclick="deleteItem('skill', ${index}, '${category}')" class="admin-only hidden absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs shadow-lg hover:scale-110 transition z-20"><i class="fas fa-times"></i></button>
+                    </div>`).join('');
+            });
+
+            // RESTORED VERTICAL GRID RENDERING
+            document.getElementById('projectsContainer').innerHTML = siteData.projects.map((p, index) => `
+                <div class="group glass-panel rounded-3xl overflow-hidden hover-glow transition-all duration-500 flex flex-col relative ${p.isStarred ? 'ring-2 ring-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.2)]' : ''}">
+                    <button onclick="deleteItem('project', ${index})" class="admin-only hidden absolute top-3 right-3 w-8 h-8 bg-red-500/90 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition z-30"><i class="fas fa-trash text-sm"></i></button>
+                    <button onclick="toggleStar(${index}, event)" class="admin-only hidden absolute top-3 right-14 w-8 h-8 ${p.isStarred ? 'bg-yellow-500 text-white shadow-[0_0_15px_rgba(250,204,21,0.5)]' : 'bg-black/50 text-stone-400 hover:text-yellow-400'} rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition z-30"><i class="${p.isStarred ? 'fas' : 'far'} fa-star text-sm"></i></button>
+                    ${p.isStarred ? '<div class="absolute top-0 left-0 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-br-lg z-30 shadow-lg"><i class="fas fa-star mr-1 text-[10px]"></i> FEATURED</div>' : ''}
+                    <div class="w-full h-56 overflow-hidden bg-black/40 p-4 flex items-center justify-center relative transition-colors duration-500 group-hover:bg-white/5">
+                        <img src="${p.image}" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Project'" alt="${p.title}" class="w-full h-full object-contain transform group-hover:scale-110 transition duration-500 rounded-xl drop-shadow-2xl">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative z-20">
+                        <h3 class="text-2xl font-bold text-white mb-3">${p.title}</h3>
+                        <p class="text-sm text-stone-400 mb-6 flex-grow font-light leading-relaxed">${p.desc}</p>
+                        <div class="mb-6 flex flex-wrap gap-2">
+                            ${p.tech.split(',').map(t => `<span class="text-xs px-3 py-1 bg-rose-500/10 border border-rose-500/20 rounded-full text-rose-300 flex items-center gap-1"><i class="${getSkillIcon(t.trim())} text-[10px]"></i> ${t.trim()}</span>`).join('')}
+                        </div>
+                        <a href="${p.link}" target="_blank" class="w-full text-center bg-white/5 hover:bg-rose-500 hover:text-white border border-white/10 text-stone-300 py-3 rounded-xl transition duration-300 font-bold flex justify-center items-center gap-2"><i class="fab fa-github"></i> View Link</a>
+                    </div>
+                </div>`).join('');
+
+            document.getElementById('certsContainer').innerHTML = siteData.certs.map((c, index) => `
+                <a href="${c.link}" target="_blank" class="block glass-panel p-5 rounded-2xl hover-glow transition duration-300 group">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-gray-200 group-hover:text-rose-400 transition">${c.name}</h4>
+                            <p class="text-sm text-stone-400 mt-1">${c.issuer}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="deleteItem('cert', ${index}, null, event)" class="admin-only hidden w-8 h-8 rounded-full bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white flex items-center justify-center transition z-20"><i class="fas fa-trash text-xs"></i></button>
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition"><i class="fas fa-external-link-alt"></i></div>
+                        </div>
+                    </div>
+                </a>`).join('');
+
+            document.getElementById('achievementsContainer').innerHTML = siteData.achievements.map((a, index) => `
+                <div class="pl-8 relative group">
+                    <button onclick="deleteItem('achievement', ${index})" class="admin-only hidden absolute top-0 right-0 w-8 h-8 rounded-full bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white flex items-center justify-center transition z-20"><i class="fas fa-trash text-xs"></i></button>
+                    <div class="absolute w-4 h-4 ${index%2===0 ? 'bg-orange-400 shadow-[0_0_15px_rgba(251,146,60,0.8)]' : 'bg-fuchsia-600'} rounded-full -left-[8.5px] top-1"></div>
+                    <h4 class="font-bold text-xl text-white pr-10">${a.title}</h4>
+                    <p class="text-orange-400 font-medium text-sm mb-3 mt-1">${a.subtitle}</p>
+                    <p class="text-stone-400 text-sm font-light leading-relaxed glass-panel p-4 rounded-xl mt-2">${a.desc}</p>
+                </div>`).join('');
+
+            if(isAdmin) document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
+        }
+
+        function openModal(id) {
+            document.getElementById('formOverlay').style.display = 'flex';
+            document.getElementById('formOverlay').style.zIndex = '300'; 
+            document.querySelectorAll('.form-modal').forEach(el => el.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function closeModals() {
+            document.getElementById('formOverlay').style.display = 'none';
+            document.getElementById('formOverlay').style.zIndex = '200'; 
+            document.querySelectorAll('.form-modal input, .form-modal textarea').forEach(el => el.value = '');
+        }
+
+        function saveNewKey() {
+            let newK = document.getElementById('newKey').value;
+            if(newK.trim().length > 0) { localStorage.setItem('zp_secret_key', newK); authKey = newK; alert("Key updated!"); closeModals(); }
+        }
+
+        function finalizeSave(type, p) {
+            if(type === 'project') {
+                siteData.projects.unshift(p);
+                siteData.projects.sort((a, b) => {
+                    if (a.isStarred && !b.isStarred) return -1;
+                    if (!a.isStarred && b.isStarred) return 1;
+                    return 0;
+                });
+            }
+            syncWithBackend(); closeModals();
+        }
+
+        function saveItem(type) {
+            if(type === 'skill') {
+                let cat = document.getElementById('skillCategory').value;
+                let name = document.getElementById('skillName').value;
+                if(name) siteData.skills[cat].unshift(name);
+                finalizeSave('skill', null);
+            } 
+            else if(type === 'project') {
+                let p = {
+                    title: document.getElementById('projTitle').value, desc: document.getElementById('projDesc').value,
+                    tech: document.getElementById('projTech').value, link: document.getElementById('projLink').value,
+                    image: 'https://placehold.co/600x400/1e293b/3b82f6?text=New+Project', isStarred: false 
+                };
+                if(!p.title) return;
+                let imageInput = document.getElementById('projImageFile');
+                if (imageInput.files && imageInput.files[0]) {
+                    let reader = new FileReader();
+                    reader.onload = function(e) { p.image = e.target.result; finalizeSave('project', p); };
+                    reader.readAsDataURL(imageInput.files[0]);
+                } else { finalizeSave('project', p); }
+            }
+            else if(type === 'cert') {
+                let c = { name: document.getElementById('certName').value, issuer: document.getElementById('certIssuer').value, link: document.getElementById('certLink').value };
+                if(c.name) siteData.certs.unshift(c); finalizeSave('cert', null);
+            }
+            else if(type === 'achievement') {
+                let a = { title: document.getElementById('achTitle').value, subtitle: document.getElementById('achSubtitle').value, desc: document.getElementById('achDesc').value };
+                if(a.title) siteData.achievements.unshift(a); finalizeSave('achievement', null);
+            }
+        }
+
+        loadDataFromBackend();
+
+    </script>
+</body>
+</html>
